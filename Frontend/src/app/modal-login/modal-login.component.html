@@ -1,0 +1,82 @@
+<div class="mat-dialog-container bg-green-light">
+    <!-- Main Container -->
+    <div class="bg-green-light flex justify-center items-center">
+      <a routerLink="/" class="absolute top-4 right-4 bg-light-green hover:bg-g-green text-white font-semibold py-2 px-4 rounded-md">
+        Back Home
+      </a>
+      <!-- Left: Image -->
+      <div class="w-1/2 h-screen hidden lg:block">
+        <img src="../../assets/images/e304b866-17a5-4bd2-9c38-74a9511c5659.png" alt="Placeholder Image" class="object-cover w-full h-full">
+      </div>
+  
+      <!-- Right: Login Form -->
+      <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 bg-green-light">
+        <h1 class="text-2xl font-semibold mb-4">Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Username Input -->
+          <div class="mb-4">
+            <label for="username" class="block text-gray-600">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              formControlName="username" 
+              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" 
+              autocomplete="off"
+              placeholder="Enter username"
+            />
+          </div>
+        
+          <!-- Password Input -->
+          <div class="mb-4">
+            <label for="password" class="block text-gray-600">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              formControlName="password" 
+              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" 
+              autocomplete="off"
+              placeholder="Enter password"
+            />
+          </div>
+        
+          <!-- Remember Me Checkbox -->
+          <div class="mb-4 flex items-center">
+            <input 
+              type="checkbox" 
+              id="remember" 
+              formControlName="remember" 
+              class="text-blue-500"
+            />
+            <label for="remember" class="text-gray-600 ml-2">Remember Me</label>
+          </div>
+        
+          <!-- Forgot Password Link -->
+          <div class="mb-6 text-light-green">
+            <a href="#" class="hover:underline">Forgot Password?</a>
+          </div>
+        
+          <!-- Login Button -->
+          <button 
+            type="submit" 
+            class="bg-light-green hover:bg-g-green text-white font-semibold rounded-md py-2 px-4 w-full"
+         >
+            Login
+          </button>
+        </form>
+                <!-- Sign up Link -->
+        <div class="mt-6 text-light-green text-center">
+          <button type="button" routerLink="/signup" class="hover:underline">Sign up Here</button>
+          
+        </div>
+        <div class="mt-6 text-light-green text-center">
+          <a class="hover:underline"
+            href="#">
+              Forgot Password?
+          </a>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

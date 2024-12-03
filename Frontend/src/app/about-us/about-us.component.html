@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="about-page font-sans text-gray-800 p-5 mx-auto px-2 sm:px-6 lg:px-8 max-w-screen-lg">
+  <!-- Breadcrumbs -->
+  <nav class="flex items-center space-x-2 text-sm mb-8" aria-label="Breadcrumb">
+    <a routerLink="/" class="opacity-60 hover:opacity-100">
+      <mat-icon class="h-4 w-4">home</mat-icon>
+    </a>
+    <span class="text-gray-400">/</span>
+    <a routerLink="/about" class="font-medium text-gray-700 hover:text-black">About</a>
+  </nav>
+  
+  <!-- Header Section -->
+  <header class="header mx-auto px-2 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-center lg:justify-between mb-16">
+    <!-- Centered Text Block -->
+    <div class="text-center lg:text-left lg:w-1/2">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-4">{{ title }}</h1>
+      <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">{{ headerDescription }}</p>
+    </div>
+
+    <!-- Right section: Images Block -->
+    <div class="header-images mt-6 lg:mt-0 lg:w-1/2 flex flex-wrap lg:flex-col lg:justify-center lg:pl-10">
+      <img
+        *ngFor="let image of headerImages"
+        [src]="image.src"
+        [alt]="image.alt"
+        class="w-full lg:w-64 h-40 mb-4 lg:mb-6 rounded-xl shadow-lg object-cover"
+      />
+    </div>
+  </header>
+  
+  <!-- Mission Section -->
+  <section class="mission flex flex-col items-center mb-16" *ngIf="mission">
+    <h2 class="text-3xl font-semibold text-[#1E40AF]">{{ missionTitle }}</h2>
+    <p class="text-lg mt-4 text-gray-600 max-w-3xl mx-auto">{{ missionDescription }}</p>
+    <img [src]="missionImage.src" [alt]="missionImage.alt" class="w-full mt-5 h-72 rounded-xl object-cover shadow-lg" />
+  </section>
+  
+  <!-- Values Section -->
+  <section class="values bg-gray-100 p-8 rounded-lg mb-16">
+    <h2 class="text-3xl font-semibold text-center text-[#22C55E]">{{ valuesTitle }}</h2>
+
+    <!-- Values Grid Layout with Two Columns per Row -->
+    <div class="values-list grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+      <div class="value bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" *ngFor="let value of values">
+        <h3 class="text-xl font-semibold text-gray-900">{{ value.title }}</h3>
+        <p class="text-sm mt-2 text-gray-600">{{ value.description }}</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Team Section -->
+  <section class="team text-center mb-16">
+    <h2 class="text-3xl font-semibold text-[#22C55E]">{{ teamTitle }}</h2>
+    <p class="text-lg mt-4 text-gray-600 max-w-3xl mx-auto">{{ teamDescription }}</p>
+    <div class="team-members flex flex-wrap justify-center gap-8 mt-8">
+      <div class="team-member text-center w-36" *ngFor="let member of team">
+        <img [src]="member.photo" [alt]="member.name" class="w-32 h-32 rounded-full mx-auto shadow-md" />
+        <p class="font-medium mt-4 text-gray-900">{{ member.name }}</p>
+        <p class="text-sm text-gray-600">{{ member.position }}</p>
+      </div>
+    </div>
+  </section>
+  
+</div>
+
+<app-footer></app-footer>

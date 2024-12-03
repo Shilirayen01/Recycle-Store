@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<!-- Breadcrumb Navigation -->
+<nav class="bg-gray-100 py-3 px-6 sm:px-10 lg:px-20 text-sm flex items-center space-x-3">
+  <a routerLink="/" class="flex items-center text-gray-600 hover:text-gray-800">
+    <mat-icon class="mr-1">home</mat-icon>
+    <span>Home</span>
+  </a>
+  <span class="text-gray-400">/</span>
+  <a routerLink="/store" class="font-medium text-gray-800 hover:text-black">
+    Store
+  </a>
+</nav>
+
+<!-- Hero Section -->
+
+
+<!-- Main Content -->
+<div class="flex">
+  <!-- Sidebar -->
+  <aside class="w-1/4 bg-gray-100 dark:bg-gray-900 p-6">
+    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Filters</h2>
+    <app-filter-menu></app-filter-menu>
+  </aside>
+
+  <!-- Products Section -->
+
+      <!-- Dynamic Products Placeholder -->
+      <app-main-store-products></app-main-store-products>
+
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

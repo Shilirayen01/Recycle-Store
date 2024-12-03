@@ -1,0 +1,103 @@
+<div class="p-4 bg-white dark:bg-gray-900 rounded-2xl shadow-lg space-y-8">
+  <!-- Header -->
+  <div class="text-center py-4 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-xl shadow">
+    <h3 class="text-2xl font-bold">Refine Search</h3>
+  </div>
+
+  <!-- Categories -->
+  <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Categories</h4>
+    <ul class="space-y-3">
+      <li>
+        <a href="javascript:void(0)" class="flex justify-between items-center text-gray-600 dark:text-gray-400 hover:text-blue-500">
+          <span>All</span>
+          <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded">10</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="flex justify-between items-center text-gray-600 dark:text-gray-400 hover:text-blue-500">
+          <span>Big Cars</span>
+          <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded">2</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="flex justify-between items-center text-gray-600 dark:text-gray-400 hover:text-blue-500">
+          <span>Sport Cars</span>
+          <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded">4</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="flex justify-between items-center text-gray-600 dark:text-gray-400 hover:text-blue-500">
+          <span>Small Cars</span>
+          <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded">4</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Filter by Price -->
+  <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Filter by Price</h4>
+    <div>
+      <div class="text-center mb-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded py-2">
+        <span>{{ min }}</span> - <span>{{ max }}</span>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <label class="font-medium text-gray-700 dark:text-gray-300">Min:</label>
+          <input type="number" class="w-20 text-center bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-lg shadow-inner" [(ngModel)]="min" />
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="font-medium text-gray-700 dark:text-gray-300">Max:</label>
+          <input type="number" class="w-20 text-center bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-lg shadow-inner" [(ngModel)]="max" />
+        </div>
+      </div>
+      <button class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-bold">
+        Apply Filter
+      </button>
+    </div>
+  </div>
+
+  <!-- Size -->
+  <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Size</h4>
+    <div class="space-y-3">
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox text-blue-500 mr-2" />
+        <span class="text-gray-700 dark:text-gray-400">Small (9)</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox text-blue-500 mr-2" />
+        <span class="text-gray-700 dark:text-gray-400">Sport (2)</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox text-blue-500 mr-2" />
+        <span class="text-gray-700 dark:text-gray-400">Big (5)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Color -->
+  <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Color</h4>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-black"></span>
+        <span class="text-gray-700 dark:text-gray-400">Black (6)</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-red-500"></span>
+        <span class="text-gray-700 dark:text-gray-400">Red (3)</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-gray-500"></span>
+        <span class="text-gray-700 dark:text-gray-400">Grey (10)</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-blue-500"></span>
+        <span class="text-gray-700 dark:text-gray-400">Blue (2)</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<footer>
+    <div class="footer bg-dark-green shadow-md">
+        <div class="lg:mb-0">
+            <button class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" 
+            type="button"
+            (click)="goToLink('https://www.example.com')">
+              <fa-icon [icon]="faFacebookF"></fa-icon>
+            </button>
+            <button
+              class="bg-white text-red-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+              type="button"
+              (click)="goToLink('https://www.example.com')">
+              <fa-icon [icon]="faGoogle"></fa-icon>
+            </button>
+            <button class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" 
+            type="button"
+            (click)="goToLink('https://www.example.com')">
+              <fa-icon [icon]="faInstagram"></fa-icon>
+            </button>
+            <button class="bg-white text-lightBlue-500 shadow-lg font-normal h-10 w-10 items-center justify-center rounded-full focus:outline-none"
+            type="button"
+            (click)="goToLink('https://www.example.com')">
+                <fa-icon [icon]="faTwitter"></fa-icon>
+            </button>
+          </div>
+
+      <div class="roww">
+        <ul>
+          <li><a href="/contact">Contact us</a></li>
+          <li><a href="/about">Our Services</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
+      </div>
+
+      <div class="roww">
+        Copyright © {{getyear}} Inferno - All rights reserved || Designed By: A&R
+      </div>
+    </div>
+  </footer>

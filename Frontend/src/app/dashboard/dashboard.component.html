@@ -1,0 +1,231 @@
+<div class="flex gap-10 overflow-x-hidden overflow-y-hidden">
+
+    <!-- Sidebar -->
+    <div class="w-1/4 bg-gray-800 h-screen p-4 text-white">
+      <h2 class="text-xl font-bold">Admin Dashboard</h2>
+      <nav class="mt-8">
+        <ul>
+          <li class="my-2">
+            <a (click)="setActiveView('dashboard')" class="block p-2 hover:bg-gray-700 rounded">Dashboard</a>
+          </li>
+          <li class="my-2">
+            <a (click)="setActiveView('usersTable')" class="block p-2 hover:bg-gray-700 rounded">Users</a>
+          </li>
+          <li class="my-2">
+            <a (click)="setActiveView('productsTable')" class="block p-2 hover:bg-gray-700 rounded">Products</a>
+          </li>
+          <li class="my-2">
+            <a (click)="setActiveView('addProductForm')" class="block p-2 hover:bg-gray-700 rounded">Add Products</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="w-3/4 p-10">
+
+        <!-- Dashboard View -->
+    <div *ngIf="activeView === 'dashboard'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-blue-500 shadow-lg rounded-md p-3 border-b-4 border-blue-600 text-white font-medium">
+          <p class="text-2xl">{{ users.length }}</p>
+          <p>Users</p>
+        </div>
+        <div class="bg-blue-500 shadow-lg rounded-md p-3 border-b-4 border-blue-600 text-white font-medium">
+            <p class="text-2xl">{{ products.length }}</p>
+            <p>Products</p>
+          </div>
+      </div>
+
+        <!-- Users Table View -->
+<div *ngIf="activeView === 'usersTable'">
+    <div class="flex justify-between mb-4">
+      <input
+        [(ngModel)]="keyword"
+        (keyup)="searchUsers()"
+        class="border p-2 rounded-lg"
+        placeholder="Search users..."
+      />
+    </div>
+    <table class="min-w-full bg-white shadow-md rounded-lg">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 border-b-2 text-left">First Name</th>
+          <th class="px-6 py-3 border-b-2 text-left">Last Name</th>
+          <th class="px-6 py-3 border-b-2 text-left">Email</th>
+          <th class="px-6 py-3 border-b-2 text-left">Role</th>
+          <th class="px-6 py-3 border-b-2 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="px-6 py-4 border-b">{{ user.first_name}}</td>
+          <td class="px-6 py-4 border-b">{{ user.last_name }}</td>
+          <td class="px-6 py-4 border-b">{{ user.email }}</td>
+          <td class="px-6 py-4 border-b">{{ user.role }}</td>
+
+          <td class="px-6 py-4 border-b">
+            <button
+              (click)="deleteUser(user.id)"
+              class="bg-red-500 text-white px-3 py-1 rounded-lg"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+      <!-- Products Table View -->
+      <div *ngIf="activeView === 'productsTable'">
+        <div class="flex justify-between mb-4">
+          <input
+            [(ngModel)]="productKeyword"
+            (keyup)="searchProducts()"
+            class="border p-2 rounded-lg"
+            placeholder="Search products..."
+          />
+        </div>
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 border-b-2 text-left">Name</th>
+              <th class="px-6 py-3 border-b-2 text-left">Price</th>
+              <th class="px-6 py-3 border-b-2 text-left">Description</th>
+              <th class="px-6 py-3 border-b-2 text-left">Create Date</th>
+              <th class="px-6 py-3 border-b-2 text-left">Update Date</th>
+              <th class="px-6 py-3 border-b-2 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td class="px-6 py-4 border-b">{{ product.nom_produit }}</td>
+              <td class="px-6 py-4 border-b">{{ product.prix | currency:'TND' }}</td>
+              <td class="px-6 py-4 border-b">{{ product.description }}</td>
+              <td class="px-6 py-4 border-b">{{ product.create_date|date:'shortDate' }}</td>
+              <td class="px-6 py-4 border-b">{{ product.update_date|date:'shortDate' }}</td>
+              <td class="px-6 py-4 border-b flex justify-between">
+                <button
+                *ngIf="product.produit_id" (click)="deleteProduct(product.produit_id)"
+                  class="bg-red-500 text-white px-3 py-1 rounded-lg"
+                >
+                  Delete
+                </button>
+
+
+                <button
+                *ngIf="product.produit_id" (click)="selectProductForEdit(product)"
+                  class="bg-blue-500 text-white px-3 py-1 rounded-lg"
+                >
+                  Update
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Add Product Form View -->
+      <div *ngIf="activeView === 'addProductForm'" class="bg-white p-6 rounded-lg shadow-md max-w-lg">
+        <h2 class="text-xl font-bold mb-4">Add New Product</h2>
+        <form #form="ngForm" (ngSubmit)="addProduct(form)">
+            <input
+            type="text"
+            name="nom_produit"
+            ngModel
+            placeholder="Product Name"
+            class="w-full p-2 mb-4 border rounded-lg"
+            required
+          />
+          <input
+            type="file"
+            name="image_url"
+            ngModel
+            placeholder="Image URL"
+            class="w-full p-2 mb-4 border rounded-lg"
+            required
+          />
+          <input
+            type="number"
+            name="prix"
+            ngModel
+            placeholder="Price"
+            class="w-full p-2 mb-4 border rounded-lg"
+            required
+          />
+          <textarea
+            name="description"
+            ngModel
+            placeholder="Description"
+            class="w-full p-2 mb-4 border rounded-lg"
+            rows="4"
+            required
+          ></textarea>
+          <Label>Created Date</Label>
+          <input
+            type="date"
+            name="create_date"
+            ngModel
+            placeholder="Create Date"
+            class="w-full p-2 mb-4 border rounded-lg"
+            required
+          />
+
+          
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Add Product</button>
+        </form>
+      </div>
+
+      <!-- Edit Product Form View (Displayed below the table) -->
+  <div *ngIf="selectedProduct" class="bg-white p-6 rounded-lg shadow-md mt-6">
+    <h2 class="text-xl font-bold mb-4">Edit Product</h2>
+    <form #form="ngForm" (ngSubmit)="updateProduct(form)">
+      <input
+        type="text"
+        name="nom_produit"
+        [(ngModel)]="selectedProduct.nom_produit"
+        placeholder="Product Name"
+        class="w-full p-2 mb-4 border rounded-lg"
+        required
+      />
+      <input
+        type="text"
+        name="image_url"
+        [(ngModel)]="selectedProduct.image_url"
+        placeholder="Image URL"
+        class="w-full p-2 mb-4 border rounded-lg"
+        required
+      />
+      <input
+        type="number"
+        name="prix"
+        [(ngModel)]="selectedProduct.prix"
+        placeholder="Price"
+        class="w-full p-2 mb-4 border rounded-lg"
+        required
+      />
+      <textarea
+        name="description"
+        [(ngModel)]="selectedProduct.description"
+        placeholder="Description"
+        class="w-full p-2 mb-4 border rounded-lg"
+        rows="4"
+        required
+      ></textarea>
+
+      <input
+        type="date"
+        name="update_date"
+        [(ngModel)]="selectedProduct.update_date"
+        class="w-full p-2 mb-4 border rounded-lg"
+        required
+      />
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Update Product</button>
+    </form>
+  </div>
+
+  
+    </div>
+  </div>
+  
